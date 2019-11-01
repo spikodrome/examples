@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+
+
+# pip install --upgrade kachery
+
 import kachery as ka
 import os
 
@@ -8,13 +13,19 @@ ka.set_config(
     download=True
 )
 
+# Load a spikeforest analysis object
 X = ka.load_object('sha1://04a29bf145a2833533527262f5f30104bcc53679/analysis.json')
+
+# the output directory on the local machine
 basedir = 'spikeforest_data'
 if not os.path.exists(basedir):
     os.mkdir(basedir)
 
+# download just one study for now
 studysets_to_include = ['PAIRED_KAMPFF']
 studies_to_include = ['paired_kampff']  
+
+# These are the files to download within each recording
 fnames = ['geom.csv', 'params.json', 'raw.mda', 'firings_true.mda']
 # fnames = ['geom.csv', 'params.json']  
 for studyset in X['StudySets']:
