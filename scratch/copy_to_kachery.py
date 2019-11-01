@@ -13,8 +13,8 @@ ka.store_object(X, basename='analysis.json')
 X = ka.load_object('sha1://04a29bf145a2833533527262f5f30104bcc53679/analysis.json')
 
 studies_to_include = ['paired_kampff']
-# fnames = ['geom.csv', 'params.json', 'raw.mda']
-fnames = ['geom.csv', 'params.json']
+fnames = ['geom.csv', 'params.json', 'raw.mda', 'firings_true.mda']
+# fnames = ['geom.csv', 'params.json']
 for studyset in X['StudySets']:
     print('STUDYSET: {}'.format(studyset['name']))
     for study in studyset['studies']:
