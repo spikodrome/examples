@@ -50,5 +50,7 @@ for studyset in X['StudySets']:
                     if not os.path.exists(recdir_local):
                         os.mkdir(recdir_local)
                     for fname in fnames:
-                        ka.load_file(recdir + '/' + fname, os.path.join(recdir_local, fname))
+                        print('Loading file {} -> {}'.format(recdir + '/' + fname, os.path.join(recdir_local, fname)))
+                        ret = ka.load_file(recdir + '/' + fname, os.path.join(recdir_local, fname))
+                        print('Saved file to {}'.format(ret))
 
