@@ -11,7 +11,7 @@ import spikeextractors as se
 from spikodrome_utils import AutoRecordingExtractor
 
 def main():
-    parser = argparse.ArgumentParser(description='Run spike sorting using MountainSort4.')
+    parser = argparse.ArgumentParser(description='Run spike sorting using SpyKING CIRCUS.')
     parser.add_argument('recording_path', help='Path (or kachery-path) to the file or directory defining the sorting')
     parser.add_argument('--output', help='The output directory', required=True)
 
@@ -25,14 +25,9 @@ def main():
 
     recording = AutoRecordingExtractor(dict(path=recording_path), download=True)
 
-    # Preprocessing
-    print('Preprocessing...')
-    recording = st.preprocessing.bandpass_filter(recording, freq_min=300, freq_max=6000)
-    recording = st.preprocessing.common_reference(recording, reference='median')
-
     # Sorting
     print('Sorting...')
-    sorting = ss.run_mountainsort4(recording, output_folder='/tmp/tmpdir', delete_output_folder=True)
+    sorting = ss.run_spykingcircus(recording, output_folder='/tmp/tmpdir', delete_output_folder=True)
 
     se.MdaSortingExtractor.write_sorting(sorting=sorting, save_path=output_dir + '/firings.mda')
 
